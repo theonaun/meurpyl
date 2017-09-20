@@ -1,0 +1,135 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document class
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt]{report}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage[sfdefault]{universalis}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Variables
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{variables}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Formatting (no indent, 1m par spacing, sans serif, report)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+\setcounter{chapter}{1}
+\lefthyphenmin5
+\righthyphenmin5
+\hypersetup{
+    pdfborder = {0 0 0}, 
+    linkbordercolor = {0 0 0}
+}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\rfoot{Page \thepage}
+\cfoot{}
+\graphicspath{{../static/}}
+\urlstyle{same}
+
+% Right header
+\rhead{
+    \begin{tikzpicture}[overlay]
+        \node[
+            fill=meurpylpurple,
+            minimum width=40cm,
+            minimum height=1cm,
+            text height=1.5ex,
+            text depth=0ex,
+        ]{\normalsize\textcolor{white}{MERUPyL \VERSION}\hfill{MORETEXT}};
+    \end{tikzpicture}
+   \vspace{1cm}
+}
+
+% Left header
+\lhead{
+    \begin{tikzpicture}[overlay]
+        \node[
+            minimum height=1cm,
+            text height=1.5ex,
+            text depth=0ex,
+        ]
+            {
+                \normalsize\textcolor{white}{MERUPyL \VERSION}
+                \normalsize\textcolor{white}{MORETEXT}};
+    \end{tikzpicture}
+   \vspace{1cm}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Properties
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{
+    \vspace{2cm}
+    \noindent
+    \begin{tikzpicture}[overlay]
+        \node[
+            fill=meurpylpurple,
+            minimum width=40cm,
+            minimum height=4cm,
+            text height=5ex,
+            text depth=1ex,
+        ]{\fontsize{50}{50}\textcolor{white}{\selectfont MEURPyL}};
+        %{\Huge\textcolor{white}{MEURPyL}};
+    \end{tikzpicture}
+    \begin{flushleft}
+        \vspace{3cm}
+        \Huge 
+        Model Enterprise Usage Rules\\
+        For The Python Language\\
+        \vspace{1cm}
+    \end{flushleft}
+    \begin{flushright}
+        \normalsize
+        \PUBDATE\\
+        \VERSION\\
+    \end{flushright}
+}
+\author{}
+\date{}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+% Title page
+\maketitle
+\pagebreak
+
+% License, abstract, authors
+\input{frontmatter}
+\thispagestyle{empty}
+
+% Table of Contents
+\tableofcontents
+\thispagestyle{empty}
+\pagebreak
+
+% Preamble
+\section{Preamble}
+\input{preamble}
+
+
+
+
+\end{document}
