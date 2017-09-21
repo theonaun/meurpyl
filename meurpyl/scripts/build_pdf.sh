@@ -1,10 +1,18 @@
 #!/bin/bash
 
+# Create build dir if necessary 
+if [ ! -d ../build ]; then
+    mkdir ../build;
+fi
+
 # Change directory to meurpyl/meurpyl/documentation
-cd ../rules/latex
+cd ../rules
 
-# Run command
-pdflatex -halt-on-error -output-directory=../build meurpyl.tex
+# Build PDF
+pdflatex -halt-on-error -output-directory=./build ./latex/meurpyl.tex
 
-# Put copy of PDF in top dir.
-cp ../build/meurpyl.pdf ../../../meurpyl.pdf
+# Build markdown
+pandoc -s ./latex/meurpyl.tex -o ./build/meurpyl.txt
+
+# Build html
+pandoc -s ./latex/meurpyl.tex -o ./build/meurpyl.html
