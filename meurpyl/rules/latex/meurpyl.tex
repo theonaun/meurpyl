@@ -48,30 +48,40 @@
     \begin{tikzpicture}[overlay]
         \node[
             fill=meurpylpurple,
-            minimum width=40cm,
+            minimum width=20cm,
             minimum height=1cm,
             text height=1.5ex,
             text depth=0ex,
-        ]{\normalsize\textcolor{white}{MERUPyL \VERSION}\hfill{MORETEXT}};
+        ]
+        	{	
+        		\normalsize\textcolor{white}{MERUPyL \VERSION}
+        	};
     \end{tikzpicture}
-   \vspace{1cm}
+   \vspace{2cm}
 }
 
 % Left header
 \lhead{
     \begin{tikzpicture}[overlay]
         \node[
+            fill=meurpylpurple,
+            minimum width=20cm,
             minimum height=1cm,
             text height=1.5ex,
             text depth=0ex,
         ]
             {
-                \normalsize\textcolor{white}{MERUPyL \VERSION}
-                \normalsize\textcolor{white}{MORETEXT}};
+                \normalsize\textcolor{white}{\rightmark}
+            };
     \end{tikzpicture}
-   \vspace{1cm}
+   \vspace{2cm}
 }
 
+\geometry{
+  top=4cm,
+  headheight=1cm, % Warns
+  headsep=1cm,
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Properties
@@ -118,7 +128,6 @@
 
 % License, abstract, authors
 \input{latex/frontmatter}
-\thispagestyle{empty}
 
 % Table of Contents
 \tableofcontents
@@ -126,7 +135,6 @@
 \pagebreak
 
 % Preamble
-\section{Preamble}
 \input{latex/preamble}
 
 
