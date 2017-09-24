@@ -1,13 +1,14 @@
 ---
-title: |
-    \[overlay\] ;
-
-    Model Enterprise Usage Rules\
-    For The Python Language\
-
-    <span>Revised 2017-09-13</span>\
-    <span>Version 0.1.0</span>\
+title: Model Enterprise Usage Rules For The Python Language
 ---
+
+\[overlay\] ;
+
+Model Enterprise Usage Rules\
+For The Python Language\
+
+<span>Revised 2017-09-13</span>\
+<span>Version 0.1.0</span>\
 
 <span>Copyright 2017, Theo Naunheim</span>
 
