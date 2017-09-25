@@ -2,7 +2,7 @@
 % Document class
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[12pt]{report}
+\documentclass[12pt]{article}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Packages
@@ -12,8 +12,10 @@
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{graphicx}
+\usepackage{tcolorbox}
 \usepackage{tikz}
 \usepackage{titling}
+\usepackage{titlesec}
 \usepackage[sfdefault]{universalis}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,12 +31,13 @@
 \renewcommand{\familydefault}{\sfdefault}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
-\setcounter{chapter}{1}
 \lefthyphenmin5
 \righthyphenmin5
 \hypersetup{
     pdfborder = {0 0 0}, 
-    linkbordercolor = {0 0 0}
+    linkbordercolor = {0 0 0},
+    pdfborderstyle = {/S/U/W 1},
+    urlbordercolor = black
 }
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
