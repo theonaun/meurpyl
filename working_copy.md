@@ -4,8 +4,7 @@ title: Model Enterprise Usage Rules For The Python Language
 
 \[overlay\] ;
 
-Model Enterprise Usage Rules\
-For The Python Language\
+Model Enterprise Usage Rules For The Python Language
 
 <span>Revised 2017-09-13</span>\
 <span>Version 0.1.0</span>\
@@ -136,14 +135,6 @@ This section will examine:
 
 5.  Packages
 
-The salient attributes of Python that warrant individualized examination
-are:
-
-Intentional misuse
-------------------
-
-A
-
 Interpretation
 --------------
 
@@ -173,7 +164,9 @@ distinction Compiled languages are comparatively easy to secure. The
 distinction between interpreted and compiled becomes All languages share
 certain risks. The use of any languages brings risk.
 
-### TEST
+### Intentional misuse
+
+A
 
 Using foreign packkages people who don’t know.
 

@@ -1,2 +1,3 @@
 pdflatex
 pandoc
+python3
