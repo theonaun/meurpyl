@@ -28,22 +28,35 @@
 % Formatting (no indent, 1m par spacing, sans serif, report)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Sans serif
 \renewcommand{\familydefault}{\sfdefault}
+
+% No pargraph indentation
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
-\lefthyphenmin5
-\righthyphenmin5
+
+% No word breaks unless it's a really, really long word.
+\lefthyphenmin=10
+\righthyphenmin=10
+
+% Setup hyperlinks
 \hypersetup{
     pdfborder = {0 0 0}, 
     linkbordercolor = {0 0 0},
 }
+\urlstyle{same}
+
+% Page style
 \pagestyle{fancy}
+
+% Graphics path
+\graphicspath{{rules/static/}}
+
+% Header styling
 \renewcommand{\headrulewidth}{0pt}
 \fancyhf{}
 \rfoot{Page \thepage}
 \cfoot{}
-\graphicspath{{rules/static/}}
-\urlstyle{same}
 \setlength{\headsep}{1.5cm}
 \setlength{\headheight}{.6cm}
 

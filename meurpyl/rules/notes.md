@@ -152,3 +152,24 @@ administrationi
 
 
 Separate variable definitions.
+
+
+4 environs
+Data Exp
+Data Proc
+Sys Adm
+Sys Scr
+ 
+ 
+Here are a list of the risks. Here are the list of the unique things we will be looking at.
+ 
+1. Intentional Misuse
+Interp
+Dynamic
+Ease of use
+ 
+2. Model Risk
+ 
+3. Unintentional Misuse
+ 
+4.
