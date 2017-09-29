@@ -6,8 +6,7 @@ title: Model Enterprise Usage Rules For The Python Language
 
 Model Enterprise Usage Rules For The Python Language
 
-<span>Revised 2017-09-13</span>\
-<span>Version 0.1.0</span>\
+<span>Revised 2017-09-13</span> <span>Version 0.1.0</span>
 
 <span>Copyright 2017, Theo Naunheim</span>
 
@@ -108,7 +107,7 @@ This section covers many basic details of the Python language, along
 with rudimentary descriptions of various risk types; it may not be
 necessary for all readers.
 
-Python has a number of unique charactaristics that makes it unlike other
+Python has a number of unique characteristics that makes it unlike other
 languages within the enterprise space. Among other things, it is
 interpreted instead of compiled, it uses syntatically significant
 whitespace instead of braces, and it uses a virtual machine specific to
@@ -126,6 +125,8 @@ This section will examine:
     3.  Model risk
 
     4.  Governance risk
+
+    5.  Maturity risk
 
 2.  Syntax
 
@@ -151,22 +152,26 @@ runtime. Though Python is partially interpreted and partially compiled,
 for the purposes of these rules Python will be referenced as an
 interpreted language.
 
-One major source of risk with any computing language is intentional
-misuse. This misuse can manifest itself through the theft of customer
-information, embezzlement, or myriad other negative consequences.
-
-With compiled languages, this is risk is partially mitigated by
-maintaining a strict separation of testing and production environments.
-The individuals who control an application by writing and compiling code
-have minimal control over how that code is used in production.
-
-distinction Compiled languages are comparatively easy to secure. The
-distinction between interpreted and compiled becomes All languages share
-certain risks. The use of any languages brings risk.
+The risk dynamic with interpreted languages is inherently different from
+compiled languages. With compiled languages, it is relatively easy
+segregate the development and source code of an application from the
+user of an application. A development group can compile the
+application’s source code, and the resulting binary can be forwarded to
+a completely separate environment for the end user. It is exceedingly
+difficult for an end user to modify the compiled binary and cause
+unintended behavior. With interpreted languages, the end user of a
+program is essentially being given possession of the application’s
+source code. A sophisticated end-user could modify this source code
+cause unintended behavior. Arguably, one could say that this is
+tantamount to the development environment being included on the end
+users computer.
 
 ### Intentional misuse
 
-A
+One major source of risk with development in any computing language is
+intentional misuse. This misuse can manifest itself in any number of
+ways, such as through the theft of customer information, embezzlement,
+or myriad other negative consequences.
 
 Using foreign packkages people who don’t know.
 
@@ -176,6 +181,10 @@ enterprise is accomplished by segregating the The addition of an
 interpreter and run time ... Every environment is arguably a development
 environment ...
 
+distinction Compiled languages are comparatively easy to secure. The
+distinction between interpreted and compiled becomes All languages share
+certain risks. The use of any languages brings risk.
+
 Dynamic Typing
 --------------
 
@@ -184,21 +193,19 @@ Typing
 Syntax
 ------
 
-Accessability
+Accessability is a double edged sword.
 
 Standard Library
 ----------------
 
-Can do things, unlike COBOL.
+T
 
-[^1]: [
-    				https://en.wikipedia.org/wiki/Interpreted\_language
-    			](
-    				https://en.wikipedia.org/wiki/Interpreted_language
-    			)
+Appendix A
+==========
 
-[^2]: [
-    				https://en.wikipedia.org/wiki/Compiled\_language
-    			](
-    				https://en.wikipedia.org/wiki/Compiled_language
-    			)
+Glossary
+========
+
+[^1]: <https://en.wikipedia.org/wiki/Interpreted_language>
+
+[^2]: <https://en.wikipedia.org/wiki/Compiled_language>
