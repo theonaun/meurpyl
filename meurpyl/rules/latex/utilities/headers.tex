@@ -1,0 +1,76 @@
+% Regular header
+
+% Page style
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{Page \thepage}
+\cfoot{}
+
+% Right header is always the same.
+\rhead{
+    \begin{tikzpicture}[overlay]
+        \node[
+            fill=meurpylpurple,
+            minimum width=20cm,
+            minimum height=1cm,
+            text height=1.5ex,
+            text depth=0ex,
+        ]
+        	{	
+        		\normalsize\textcolor{white}{MERUPyL \VERSION}
+        	};
+    \end{tikzpicture}
+}
+
+% Default left header is subsection
+\lhead{
+    \begin{tikzpicture}[overlay]
+        \node[
+            fill=meurpylpurple,
+            minimum width=20cm,
+            minimum height=1cm,
+            text height=1.5ex,
+            text depth=0ex,
+        ]
+            {
+                \normalsize\textcolor{white}{\nouppercase{\rightmark}}
+            };
+    \end{tikzpicture}
+}
+
+
+\fancypagestyle{section_start_style}{
+    % Left header
+    \lhead{
+        \begin{tikzpicture}[overlay]
+            \node[
+                fill=meurpylpurple,
+                minimum width=20cm,
+                minimum height=1cm,
+                text height=1.5ex,
+                text depth=0ex,
+            ]
+                {
+                    \normalsize\textcolor{white}{\nouppercase{\leftmark}}
+                };
+        \end{tikzpicture}
+    }
+}
+
+\fancypagestyle{blank_style}{
+	% Left header
+    \lhead{
+        \begin{tikzpicture}[overlay]
+            \node[
+                fill=meurpylpurple,
+                minimum width=20cm,
+                minimum height=1cm,
+                text height=1.5ex,
+                text depth=0ex,
+            ]
+                {
+                    \normalsize\textcolor{white}{}
+                };
+        \end{tikzpicture}
+    }
+}

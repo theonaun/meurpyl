@@ -6,7 +6,8 @@ title: Model Enterprise Usage Rules For The Python Language
 
 Model Enterprise Usage Rules For The Python Language
 
-<span>Revised 2017-09-13</span> <span>Version 0.1.0</span>
+<span>Revised 2017-09-13</span>\
+<span>Version 0.1.0</span>\
 
 <span>Copyright 2017, Theo Naunheim</span>
 
@@ -50,7 +51,7 @@ risk profile that benefits from individualized treatment. The purpose of
 this document is to provide a model set of rules for the governance and
 use of the Python language in the financial services context.
 
-Preamble
+Preamble {#preamble .unnumbered}
 --------
 
 Corporations are creatures of habit; they do today what they did

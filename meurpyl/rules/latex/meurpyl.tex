@@ -22,7 +22,7 @@
 % Variables
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\input{rules/latex/variables}
+\input{rules/latex/utilities/variables}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Formatting (no indent, 1m par spacing, sans serif, report)
@@ -46,52 +46,20 @@
 }
 \urlstyle{same}
 
-% Page style
-\pagestyle{fancy}
-
 % Graphics path
 \graphicspath{{rules/static/}}
 
 % Header styling
 \renewcommand{\headrulewidth}{0pt}
-\fancyhf{}
-\rfoot{Page \thepage}
-\cfoot{}
+
 \setlength{\headsep}{1.5cm}
 \setlength{\headheight}{.6cm}
 
-% Right header
-\rhead{
-    \begin{tikzpicture}[overlay]
-        \node[
-            fill=meurpylpurple,
-            minimum width=20cm,
-            minimum height=1cm,
-            text height=1.5ex,
-            text depth=0ex,
-        ]
-        	{	
-        		\normalsize\textcolor{white}{MERUPyL \VERSION}
-        	};
-    \end{tikzpicture}
-}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header types
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Left header
-\lhead{
-    \begin{tikzpicture}[overlay]
-        \node[
-            fill=meurpylpurple,
-            minimum width=20cm,
-            minimum height=1cm,
-            text height=1.5ex,
-            text depth=0ex,
-        ]
-            {
-                \normalsize\textcolor{white}{\nouppercase{\rightmark}}
-            };
-    \end{tikzpicture}
-}
-
+\input{rules/latex/utilities/headers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Properties
@@ -125,11 +93,11 @@
 \pagebreak
 
 % Risk profile
-\input{rules/latex/risk_profile}
+\input{rules/latex/content/risk_profile}
 \pagebreak
 
 % Appendix A: Apologia
-\input{rules/latex/appendix_a}
+\input{rules/latex/appendices/appendix_a}
 \pagebreak
 
 % Glossary
