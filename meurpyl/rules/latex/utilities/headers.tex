@@ -3,7 +3,6 @@
 % Page style
 \pagestyle{fancy}
 \fancyhf{}
-\rfoot{Page \thepage}
 \cfoot{}
 
 % Right header is always the same.
@@ -73,4 +72,41 @@
                 };
         \end{tikzpicture}
     }
+}
+
+\lfoot{
+    \vspace*{1cm}
+    \begin{tikzpicture}[overlay]
+        \hspace{-1.0cm}
+        \node[
+            circle,
+            fill=white,
+            minimum width=.5cm,
+            text width=.5cm
+        ]
+        {
+            \vspace*{-.2cm}
+            {
+                \def\svgwidth{1cm}
+                \input{rules/static/purple_python_logo.pdf_tex}
+            }
+        };
+    \end{tikzpicture}
+}
+
+\rfoot{
+    \vspace*{1cm}
+    \begin{tikzpicture}[overlay]
+        \hspace*{1.0cm}
+        \node[
+            circle,
+            fill=white,
+            minimum width=.5cm,
+            text width=.5cm
+        ]
+        {
+            \vspace*{-.2cm}
+            \thepage
+        };
+    \end{tikzpicture}
 }

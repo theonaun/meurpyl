@@ -75,33 +75,46 @@
 
 \begin{document}
 
-% Title page
-\input{rules/latex/title_page}
-\pagebreak
+    % Title page
+    \input{rules/latex/title_page}
+    \pagebreak
 
-% License, abstract, authors
-\input{rules/latex/front_matter}
-\pagebreak
+    % License, abstract, authors
+    \input{rules/latex/front_matter}
+    \pagebreak
 
-% Table of Contents
-\tableofcontents
-\thispagestyle{empty}
-\pagebreak
+    % Table of Contents
+    \tableofcontents
+    \thispagestyle{empty}
+    \pagebreak
 
-% Preamble
-\input{rules/latex/preamble}
-\pagebreak
+    % Preamble
+    \input{rules/latex/preamble}
+    \pagebreak
 
-% Risk profile
-\input{rules/latex/content/risk_profile}
-\pagebreak
+    % Risk profile
+    \input{rules/latex/content/risk_profile}
+    \pagebreak
 
-% Appendix A: Apologia
-\input{rules/latex/appendices/appendix_a}
-\pagebreak
+    % Usage Classification
+    \input{rules/latex/content/usage_roles}
+    \pagebreak
 
-% Glossary
-\input{rules/latex/glossary}
-\pagebreak
+    % Infrastructure
+    \input{rules/latex/content/infrastructure}
+
+    % Infrastructure
+    \input{rules/latex/content/governance}
+
+    % Infrastructure
+    \input{rules/latex/content/audit}
+
+    % Appendix A: Apologia
+    \input{rules/latex/appendices/appendix_a}
+    \pagebreak
+
+    % Glossary
+    \input{rules/latex/glossary}
+    \pagebreak
 
 \end{document}

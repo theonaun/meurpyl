@@ -27,17 +27,19 @@
 		\end{enumerate}
 
 	\subsection{Interpretation}
-		The largest difference between Python and other enterprise languages from a risk management perspective is that Python can be thought of as an interpreted language, as opposed to a compiled language.
-		\footnote{\url{https://en.wikipedia.org/wiki/Interpreted_language}}
-		% Footnote comma sep
-		$^{,}$
-		\footnote{\url{https://en.wikipedia.org/wiki/Compiled_language}}
-		Computing languages can fall on a spectrum of those that are primarily interpreted (such as R and Python) and those that are primarily compiled (such as COBOL and C++). The difference is that compiled languages do a comparatively larger portion of any computation at the time of compilation, and have minimal runtime environments. Interpreted languages do most or all of the computations required at runtime. Though Python is partially interpreted and partially compiled, for the purposes of these rules Python will be referenced as an interpreted language.
+		The largest difference between Python and other enterprise languages from a risk management perspective is that Python can be thought of as an interpreted language, as opposed to a compiled language. 
+		\footnote{\url{https://en.wikipedia.org/wiki/Interpreted_language}} 
+		Computing languages can fall on a spectrum of those that are primarily interpreted (such as R and Python) and those that are primarily compiled (such as COBOL and C++). The difference is that compiled languages do a comparatively larger portion of any computation at the time of compilation, and have minimal runtime environments. 
+		\footnote{\url{https://en.wikipedia.org/wiki/Compiled_language}} 
+		Interpreted languages do most or all of the computations required at runtime. Though Python is partially interpreted and partially compiled, for the purposes of these rules Python will be referenced as an interpreted language.
 
-		The risk dynamic with interpreted languages is inherently different from compiled languages. With compiled languages, it is relatively easy segregate the development and source code of an application from the user of an application. A development group can compile the application's source code, and the resulting binary can be forwarded to a completely separate environment for the end user. It is exceedingly difficult for an end user to modify the compiled binary and cause unintended behavior. With interpreted languages, the end user of a program is essentially being given possession of the application's source code. A sophisticated end-user could modify this source code cause unintended behavior. Arguably, one could say that this is tantamount to the development environment being included on the end users computer.
+		The risk dynamic with interpreted languages is inherently different from compiled languages. With compiled languages, it is relatively easy segregate the development and source code of an application from the user of an application. A development group can compile the application's source code, and the resulting binary can be forwarded to a completely separate environment for the end user. It is exceedingly difficult for an end user to modify the compiled binary and cause unintended behavior. With interpreted languages, the end user of a program is essentially being given possession of the application's source code. A sophisticated end-user could modify this source code cause unintended behavior. In that sense, the risks associated with interpreted languages are much like the risks associated with operating system shells such as Bash or Powershell.
 
 		\subsubsection{Intentional misuse}
-			One major source of risk with development in any computing language is intentional misuse. This misuse can manifest itself in any number of ways, such as through the theft of customer information, embezzlement, or myriad other negative consequences.
+			One major source of risk with development in any computing language within enterprise is intentional misuse. This misuse can manifest itself in any number of ways. Some individuals skirt rules and use tools in an unintended manner to make their lives easier. Others may use tools for embezzlement or identity theft.
+
+			
+			, such as through the theft of customer information, embezzlement, or myriad other negative consequences.
 
 
 		\iffalse
@@ -68,7 +70,7 @@
 
 		%Can do things, unlike COBOL.
 
-		T%ESTING?
+		%TESTING?
 
 		%https://ithandbook.ffiec.gov/media/274741/ffiec_itbooklet_developmentandacquisition.pdf
 

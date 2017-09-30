@@ -60,21 +60,21 @@ benefits: it is stable, predictable, and even comforting. It is not
 completely without cost, however. Companies that fail to innovate
 stagnate and die every day.
 
-Enterprise Python shares these trade offs. Unlike COBOL, it does not
-have fifty years of enterprise usage. Unlike C\#, it is not backed up
-with an army of software engineers and support staff to integrate the
-language within existing intrastructure. In its place, Python provides a
-fluid and expressive environment that is unparalelled for rapid
-development and data science.
+Enterprise Python lives in the same world and shares the same trade
+offs. Unlike COBOL, it does not have fifty years of enterprise usage.
+Unlike C\#, it is not backed up with an army of software engineers and
+support staff to integrate the language within existing intrastructure.
+In its place, Python provides a fluid and expressive environment that is
+unparalelled for rapid development and data science.
 
 Risk managers and information technology employees often recognize these
 strengths, but are hesistant to fully accept Python in their
 organizations without fuller understanding of the risks involved. In
 order to make Python more palatable at the enterprise level, some
-tradeoffs must be made. A measure of autonomy is sacrificed for the sake
-of control and oversight. Some flexibility is sacrificed for the sake of
-stability and uniformity. Empowerment is sacrificed for the sake of
-security and mitigating risk.
+trade-offs must be made. A measure of autonomy is sacrificed for the
+sake of control and oversight. Some flexibility is sacrificed for the
+sake of stability and uniformity. Empowerment is sacrificed for the sake
+of security and mitigating risk.
 
 These rules use the following guiding principles to inform these
 trade-offs:
@@ -90,10 +90,10 @@ trade-offs:
 -   **Make it as safe as it needs to be (but no safer)**–things cannot
     be made completely safe, but they can be made completely useless.
 
-Finally, the Model Enterprise Usage Rules for the Python Language
-(“MEURPyL” or “Meurpyl”) provides a model for a set of baseline
-standards governing the Python language. Meurpyl is just that: a
-baseline. It is not dogma that is intended to be adopted without
+These Model Enterprise Usage Rules for the Python Language (“MEURPyL” or
+“Meurpyl”) are intended to mitigate risk by proving a model set of
+baseline standards for medium to large institutions. Meurpyl is just
+that: a baseline. It is not dogma that is intended to be adopted without
 question. Rather, it is intended to function as a base by which
 organizations can adapt Python for their own purposes–using what works
 and ignoring the rest.
@@ -201,11 +201,53 @@ Standard Library
 
 T
 
+Usage Roles
+===========
+
+Introduction
+------------
+
+Data Exploration (DE)
+---------------------
+
+Data Processing (DP)
+--------------------
+
+Systems Administation (SA)
+--------------------------
+
+Systems Processing (SP)
+-----------------------
+
+Unclassified Role (UR)
+----------------------
+
+Infrastructure
+==============
+
+Introduction
+------------
+
+Governance
+==========
+
+Introduction
+------------
+
+Audit
+=====
+
+Introduction
+------------
+
 Appendix A
 ==========
 
 Glossary
 ========
+
+<span> **Meurpyl**: Model Enterprise Usage Rules for the Python
+Lanugage</span>
 
 [^1]: <https://en.wikipedia.org/wiki/Interpreted_language>
 
