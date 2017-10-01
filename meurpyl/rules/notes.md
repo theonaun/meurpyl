@@ -173,3 +173,56 @@ Ease of use
 3. Unintentional Misuse
  
 4.
+
+		%Can do things, unlike COBOL.
+
+		%TESTING?
+
+		%https://ithandbook.ffiec.gov/media/274741/ffiec_itbooklet_developmentandacquisition.pdf
+
+		%https://ithandbook.ffiec.gov/media/274793/ffiec_itbooklet_informationsecurity.pdf
+
+		%https://ithandbook.ffiec.gov/media/274825/ffiec_itbooklet_operations.pdf
+
+		%https://ithandbook.ffiec.gov/media/274809/ffiec_itbooklet_management.pdf
+
+		%ISO 9000 standards?
+
+		%https://ithandbook.ffiec.gov/media/274709/ffiec_itbooklet_audit.pdf
+
+	\subsection{Syntax}
+
+		Accessability is a double edged sword.
+
+
+\iffalse
+				\begin{enumerate}
+   			\item Interpretation
+   			\begin{enumerate}
+	   			\item Intentional misuse
+	   			\item Unintentional misuse
+	   			\item Model risk
+	   			\item Governance risk
+	   			\item Maturity risk
+   			\end{enumerate}
+   			\item Syntax
+   			\item Dynamic tyling
+   			\item Standard library
+   			\item Packages
+   			\item Language Support
+
+		\end{enumerate}
+			Using foreign packkages people who don't know.
+
+			operations reputational
+			The distinction between interpreted and compiled becomes important when 
+			Managing risk with compiled languages within the enterprise is accomplished by segregating the 
+			The addition of an interpreter and run time ...
+			Every environment is arguably a development environment ...
+
+			distinction
+			Compiled languages are comparatively easy to secure.
+			The distinction between interpreted and compiled becomes 
+			All languages share certain risks.
+			The use of any languages brings risk. 
+		\fi

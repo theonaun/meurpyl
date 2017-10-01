@@ -115,43 +115,20 @@ whitespace instead of braces, and it uses a virtual machine specific to
 the Python language. These attributes significantly affect the risks
 Python presents and the manner in which they can be mitigated.
 
-This section will examine:
-
-1.  Interpretation
-
-    1.  Intentional misuse
-
-    2.  Unintentional misuse
-
-    3.  Model risk
-
-    4.  Governance risk
-
-    5.  Maturity risk
-
-2.  Syntax
-
-3.  Dynamic tyling
-
-4.  Standard library
-
-5.  Packages
-
 Interpretation
 --------------
 
 The largest difference between Python and other enterprise languages
 from a risk management perspective is that Python can be thought of as
-an interpreted language, as opposed to a compiled language. [^1] $^{,}$
-[^2] Computing languages can fall on a spectrum of those that are
-primarily interpreted (such as R and Python) and those that are
-primarily compiled (such as COBOL and C++). The difference is that
-compiled languages do a comparatively larger portion of any computation
-at the time of compilation, and have minimal runtime environments.
-Interpreted languages do most or all of the computations required at
-runtime. Though Python is partially interpreted and partially compiled,
-for the purposes of these rules Python will be referenced as an
-interpreted language.
+an interpreted language, as opposed to a compiled language.[^1]
+Computing languages can fall on a spectrum of those that are primarily
+interpreted (such as R and Python) and those that are primarily compiled
+(such as COBOL and C++). The difference is that compiled languages do a
+comparatively larger portion of any computation at the time of
+compilation, and have minimal runtime environments.[^2] Interpreted
+languages do most or all of the computations required at runtime. Though
+Python is partially interpreted and partially compiled, for the purposes
+of these rules Python will be referenced as an interpreted language.
 
 The risk dynamic with interpreted languages is inherently different from
 compiled languages. With compiled languages, it is relatively easy
@@ -160,46 +137,61 @@ user of an application. A development group can compile the
 application’s source code, and the resulting binary can be forwarded to
 a completely separate environment for the end user. It is exceedingly
 difficult for an end user to modify the compiled binary and cause
-unintended behavior. With interpreted languages, the end user of a
-program is essentially being given possession of the application’s
-source code. A sophisticated end-user could modify this source code
-cause unintended behavior. Arguably, one could say that this is
-tantamount to the development environment being included on the end
-users computer.
+unintended behavior. With interpreted languages, however, the end user
+of a program is essentially being given possession of the application’s
+source code. The risks involved are more akin to a shell than a basic
+application due to Python’s inherent flexibility. A sophisticated
+end-user could modify this source code or create his or her own source
+code to cause unintended behavior. While this is not appreciably
+different than having access to a shell such as Powershell or Bash, it
+is a distinct risk.
 
 ### Intentional misuse
 
-One major source of risk with development in any computing language is
-intentional misuse. This misuse can manifest itself in any number of
-ways, such as through the theft of customer information, embezzlement,
-or myriad other negative consequences.
+One major source of risk with development in any computing language
+within enterprise is intentional misuse. This misuse can manifest itself
+in any number of ways. Some individuals skirt rules and use tools in an
+unintended manner to make their lives easier. Others may misuse tools to
+enrich themselves or to hurt their companies.Some examples of
+intentional misuse are:
 
-Using foreign packkages people who don’t know.
+**Theft, Embezzlement, and Misappropriation.** Because the individual
+controlling a Python interpreter has the ability to perform most
+abilities that a user can conduct manually, Python can be used to
+collect and process large amounts of information. Absent controls,
+Python can be used to scan large amounts of data, process it, and
+transfer it in an automated manner. This makes shells, interpreted
+languages, and similar tools attractive employees looking to engage in
+the theft of customer information or intellectual property.
 
-operations reputational The distinction between interpreted and compiled
-becomes important when Managing risk with compiled languages within the
-enterprise is accomplished by segregating the The addition of an
-interpreter and run time ... Every environment is arguably a development
-environment ...
+**Unsanctioned Development.** With the Python language, it is not
+possible to limit the creation of programs to groups with access to
+compilers. To run Python programs, users require Python interpreters. If
+users have Python interpreters, they necessarily have the tools needed
+to create programs. If employees have the ability to develop software,
+there is a non-negligible chance that they will do so. These
+non-development employees are often the least equipped to address
+software development risks due to their lack of familiarity with the
+process. In the financial services context, this also covers the
+unsanctioned development of models, which is governed by Office of the
+Comptroller of the Currency (“OCC”) guidance.[^3]
 
-distinction Compiled languages are comparatively easy to secure. The
-distinction between interpreted and compiled becomes All languages share
-certain risks. The use of any languages brings risk.
+**Impermissible Use.** In addition to illegal activities and
+unsanctioned devleopment, intentional misuse can take the form of ...
+
+### Unintentional misuse
 
 Dynamic Typing
 --------------
 
-Typing
-
 Syntax
 ------
-
-Accessability is a double edged sword.
 
 Standard Library
 ----------------
 
-T
+Language Support
+----------------
 
 Usage Roles
 ===========
@@ -249,6 +241,10 @@ Glossary
 <span> **Meurpyl**: Model Enterprise Usage Rules for the Python
 Lanugage</span>
 
+<span> **OCC**: Office of the Comptroller of the Currency</span>
+
 [^1]: <https://en.wikipedia.org/wiki/Interpreted_language>
 
 [^2]: <https://en.wikipedia.org/wiki/Compiled_language>
+
+[^3]: <https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html>
