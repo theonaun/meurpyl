@@ -16,6 +16,3 @@ pandoc -s ./rules/latex/meurpyl.tex -o ./rules/build/meurpyl.md
 
 # Build html
 pandoc -s ./rules/latex/meurpyl.tex -o ./rules/build/meurpyl.html
-
-# Move working markdown copy to root folder
-cp ./rules/build/meurpyl.md ../working_copy.md
