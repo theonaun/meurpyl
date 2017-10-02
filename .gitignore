@@ -1,6 +1,3 @@
-# No use in tracking binary pdfs
-*.pdf
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
