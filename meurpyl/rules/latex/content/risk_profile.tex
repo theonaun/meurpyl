@@ -1,41 +1,53 @@
+% TODO:TKN: there is a bunch of redundant stuff here.
+% TODO:TKN: ensure list of examples is consistent.
+% TODO:TKN: write script to translate indented outline to {enumerate}
+ 
 \section{Risk Profile}
-
+ 
 \thispagestyle{section_start_style}
-
-	\subsection{Introduction}
-
-		\begin{tcolorbox}
-			This section covers many basic details of the Python language, along with rudimentary descriptions of various risk types; it may not be necessary for all readers.
-		\end{tcolorbox}
-
-		Python has a number of unique characteristics that makes it unlike other languages within the enterprise space. Among other things, it is interpreted instead of compiled, it uses syntatically significant whitespace instead of braces, and it uses a virtual machine specific to the Python language. These attributes significantly affect the risks Python presents and the manner in which they can be mitigated.
-
-	\subsection{Interpretation}
-
-		The largest difference between Python and other enterprise languages from a risk management perspective is that Python can be thought of as an interpreted language, as opposed to a compiled language.\footnote{\url{https://en.wikipedia.org/wiki/Interpreted_language}} Computing languages can fall on a spectrum of those that are primarily interpreted (such as R and Python) and those that are primarily compiled (such as COBOL and C++). The difference is that compiled languages do a comparatively larger portion of any computation at the time of compilation, and have minimal runtime environments.\footnote{\url{https://en.wikipedia.org/wiki/Compiled_language}} Interpreted languages do most or all of the computations required at runtime. Though Python is partially interpreted and partially compiled, for the purposes of these rules Python will be referenced as an interpreted language.
-
-		The risk dynamic with interpreted languages is inherently different from compiled languages. With compiled languages, it is relatively easy segregate the development and source code of an application from the user of an application. A development group can compile the application's source code, and the resulting binary can be forwarded to a completely separate environment for the end user. It is exceedingly difficult for an end user to modify the compiled binary and cause unintended behavior. With interpreted languages, however, the end user of a program is essentially being given possession of the application's source code. The risks involved are more akin to a shell than a basic application due to Python's inherent flexibility. A sophisticated end-user could modify this source code or create his or her own source code to cause unintended behavior. While this is not appreciably different than having access to a shell such as Powershell or Bash, it is a distinct risk.
-
-		\subsubsection{Intentional misuse}
-
-			One major source of risk with development in any computing language within enterprise is intentional misuse. This misuse can manifest itself in any number of ways. Some individuals skirt rules and use tools in an unintended manner to make their lives easier. Others may misuse tools to enrich themselves or to hurt their companies.Some examples of intentional misuse are:
-
-			\textbf{Theft, Embezzlement, and Misappropriation.}
-			Because the individual controlling a Python interpreter has the ability to perform most abilities that a user can conduct manually, Python can be used to collect and process large amounts of information. Absent controls, Python can be used to scan large amounts of data, process it, and transfer it in an automated manner. This makes shells, interpreted languages, and similar tools attractive employees looking to engage in the theft of customer information or intellectual property.
-
-			\textbf{Unsanctioned Development.}
-			With the Python language, it is not possible to limit the creation of programs to groups with access to compilers. To run Python programs, users require Python interpreters. If users have Python interpreters, they necessarily have the tools needed to create programs. If employees have the ability to develop software, there is a non-negligible chance that they will do so. These non-development employees are often the least equipped to address software development risks due to their lack of familiarity with the process. In the financial services context, this also covers the unsanctioned development of models, which is governed by Office of the Comptroller of the Currency ("OCC") guidance.\footnote{\url{https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html}}
-
-			\textbf{Impermissible Use.}
-			In addition to illegal activities and unsanctioned devleopment, intentional misuse can take the form of ...
-
-
-		\subsubsection{Unintentional misuse}
-			
-	\subsection{Dynamic Typing}
-
-	\subsection{Syntax}
-
-	\subsection{Standard Library}
-
-	\subsection{Language Support}
+ 
+                \subsection{Introduction}
+ 
+                                \begin{tcolorbox}
+                                                This section covers many basic details of the Python language, along with rudimentary descriptions of various risk types; it may not be necessary for all readers.
+                                \end{tcolorbox}
+ 
+                                Python has a number of unique characteristics that makes it unlike other languages within the enterprise space. Among other things, it is interpreted instead of compiled, it uses syntatically significant whitespace instead of braces, and it uses a virtual machine specific to the Python language. These attributes significantly affect the risks Python presents and the manner in which they can be mitigated.\footnote{\hyperref[sec:appendix_b]{See Appendix A for a non-exhaustive list of potential risks.}}
+ 
+                \subsection{Interpretation}
+ 
+                                The largest difference between Python and other enterprise languages from a risk management perspective is that Python can be thought of as an interpreted language, as opposed to a compiled language.\footnote{\url{https://en.wikipedia.org/wiki/Interpreted_language}} Computing languages can fall on a spectrum of those that are primarily interpreted (such as R and Python) and those that are primarily compiled (such as COBOL and C++). The difference is that compiled languages do a comparatively larger portion of any computation at the time of compilation, and have minimal runtime environments.\footnote{\url{https://en.wikipedia.org/wiki/Compiled_language}} Interpreted languages do most or all of the computations required at runtime. Though Python is partially interpreted and partially compiled, for the purposes of these rules Python will be referenced as an interpreted language.
+ 
+                                The risk dynamic with interpreted languages is inherently different from compiled languages. With compiled languages, it is relatively easy segregate the development and source code of an application from the user of an application. A development group can compile the application's source code, and the resulting binary can be forwarded to a completely separate environment for the end user. It is exceedingly difficult for an end user to modify the compiled binary and cause unintended behavior. With interpreted languages, however, the end user of a program is essentially being given possession of the application's source code. The risks involved are more akin to a shell than a basic application due to Python's inherent flexibility. A sophisticated end-user could modify this source code or create his or her own source code to cause unintended behavior. While this is not appreciably different than having access to a shell such as Powershell or Bash, it is a distinct risk.
+ 
+                                \subsubsection{Intentional misuse}
+ 
+                                                One major source of risk with development in any computing language within enterprise is intentional misuse. This misuse can manifest itself in any number of ways. Some individuals skirt rules and use tools in an unintended manner to make their lives easier. Others may misuse tools to enrich themselves or to hurt their companies. There are many potential classifications of intentional misuse.
+ 
+                                                \textbf{Theft, Embezzlement, and Misappropriation.}
+                                                Because the individual controlling a Python interpreter has the ability to perform most abilities that a user can conduct manually, Python can be used to collect and process large amounts of information. Absent controls, Python can be used to scan large amounts of data, process it, and transfer it in an automated manner. This makes interpreted languages (including shells such as Bash and Powershell), and similar tools attractive employees looking to engage in the theft of personally-identifiable customer information or intellectual property.
+ 
+                                                \textbf{Unsanctioned Development.}
+                                                With the Python language, it is not possible to limit the creation of programs to groups with access to compilers. To run Python programs, users require Python interpreters. If users have Python interpreters, they necessarily have the tools needed to create programs. Given this ability to develop software, there is a non-negligible chance that they will do so. These non-development employees are often the least equipped to address software development risks due to their lack of familiarity with the process. Unsanctioned development can and often does result in insecure, non-performant, or otherwise defective code. In the financial services context, this also covers the unsanctioned development of models, which is governed by Office of the Comptroller of the Currency ("OCC") guidance.\footnote{\url{https://www.occ.gov/news-issuances/bulletins/2011/bulletin-2011-12.html}}
+ 
+                                                \textbf{Impermissible Use.}
+                                                In addition to illegal activities and unsanctioned development, impermissible use also presents a number of risks. Employees at large institutions are often subject to an array of laws, regulations, rules, policies, and procedures that help promote uniformity and a set of minimum conduct standards. Violating these standards can result in civil penalties, criminal penalties, and audit findings. In addition, circumventing the controls around these processes can give rise to issues such as comprimising network security, the transmission of unencrypted customer information, and improper storage of personally identifiable customer information.
+ 
+                                \subsubsection{Unintentional misuse}
+ 
+                                                Employees do not need to maliciously engage in harmful behavior in order to damage their companies--simple negligence can be just as destructive. Like intentional misuse, there are a variety of classes of unintentional misuse. While many of the risks are analogous, the manner in which they present themselves are not.
+ 
+                                                \textbf{Insecure Code.}
+                                                All languages have security risks, and Python is no exception. While Python programs do not deal directly with high-risk processes such as direct memory management, poor coding practices can result in uninteded behavior. The general classes of potential risks are priviledge escalation, destruction of data, and the appropriation of proprietary data.
+                                               
+                                                \textbf{Non-Performant Code}
+                                                Developers must also take care to avoid creating poorly performing code. Python is relatively slow compared to compiled languages like C++ or COBOL. Though Python is usually fast enough, the effect of inefficient code is more pronounced when using Python. Employees should be aware of things like Python's threading idiosyncracies and libraries that can be used to offload computationally heavy processes.
+ 
+                \subsection{Dynamic Typing}
+ 
+                \subsection{Syntax}
+ 
+                \subsection{Packages}
+ 
+                \subsection{Language Support}
+ 

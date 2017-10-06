@@ -1,0 +1,117 @@
+\section{Appendix B: Risk Types}
+\label{sec:appendix_b}
+
+\thispagestyle{section_start_style}
+
+\begin{enumerate}
+
+        \item Interpretation
+        \begin{enumerate}
+
+                \item Intentional Misuse
+                \begin{enumerate}
+                        \item Theft, Embezzlement, or Misappropriation
+                        \begin{enumerate}
+                                \item Automating the copying sensitive information
+                                \item Automating the encryption sensitive information
+                                \item Automating the transmision of sensitive information
+                                \item Automating shell commands
+                        \end{enumerate}
+                        \item Unsanctioned Development
+                        \begin{enumerate}
+                                \item Allowing substandard development by parties who possess and interpeter
+                                \item Allowing for the development of models outside controlled environments
+                        \end{enumerate}
+                        \item Impermissible Use
+                        \begin{enumerate}
+                                \item Improper storage of customer information
+                                \item Automation of web applications outside established controls
+                                \item Illegal use of credit and/or demographic data
+                        \end{enumerate}
+                \end{enumerate}
+
+                \item Unintentional Misuse
+                \begin{enumerate}
+                        \item Insecure Code
+                        \begin{enumerate}
+                                \item Deserialization
+                                \item Eval()
+                                \item Calling system shell
+                                \item SQL/HTML sanitization
+                        \end{enumerate}
+                        \item Non-Performant Code
+                        \begin{enumerate}
+                                \item Over-reliance on single threaded code
+                                \item Failure to use efficient C extensions in place of looping constructs
+                        \end{enumerate}
+                \end{enumerate}
+        \end{enumerate} % End Interpretation
+
+        \item Dynamic Typing
+        \begin{enumerate}
+                \item Requires users to explicitly type check for safety
+                \item Type hinting is not enforced by the language
+        \end{enumerate}           
+
+        \item Syntax
+        \begin{enumerate}
+                \item Simplicity, Clarity, and Accessability
+                \begin{enumerate}
+                        \item Large Potential User Based
+                        \begin{enumerate}
+                                \item Varying skill levels
+                                \item Larger population means more potential for misuse
+                        \end{enumerate}
+                \end{enumerate}
+                \item Atypical Grammar
+                \begin{enumerate}
+                        \item Unusual style for those coming from C-style syntax
+                \end{enumerate}
+        \end{enumerate} % End Syntax
+
+        \item Package Risk
+        \begin{enumerate}
+                \item Internally-Developed Packages
+                \begin{enumerate}
+                        \item Source Code Control
+                        \item Defective Maintenance, Testing, and Documentation
+                        \item Malicious Packages
+                        \item Model Risk Management
+                \end{enumerate}
+                \item Externally-Developed Packages
+                \begin{enumerate}
+                        \item Defecitve Maintenance, Testing, sand Documentation
+                        \item Derelict Packages
+                        \item Package License Risk
+                        \begin{enumerate}
+                                \item GPL
+                                \item BSD
+                                \item Apache
+                        \end{enumerate}
+                        \item Malicious Packages
+                        \begin{enumerate}
+                                \item Misspelled PyPI
+                                \item Unsigned PyPI
+                                \item Closed Source compiled-extensions
+                        \end{enumerate}
+                        \item Model Risk management
+                \end{enumerate}
+        \end{enumerate} % End Package Risk
+
+        \item Language Support
+        \begin{enumerate}
+                \item Direct Support
+                \begin{enumerate}
+                        \item Support Contracts
+                \end{enumerate}
+                \item Supplemental Support
+                \begin{enumerate}
+                        \item Linux Vendor Support
+                \end{enumerate}
+                \item Internal Support
+                \begin{enumerate}
+                        \item Community-Based Support
+                \end{enumerate}
+        \end{enumerate} % End Language Support
+
+\end{enumerate} % End Entire List
