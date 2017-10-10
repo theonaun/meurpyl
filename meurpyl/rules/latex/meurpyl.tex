@@ -17,6 +17,7 @@
 \usepackage{titling}
 \usepackage{titlesec}
 \usepackage[sfdefault]{universalis}
+\usepackage{wrapfig}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Variables
@@ -77,6 +78,10 @@
 % Document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% TODO@TN: Make less preachy and more informal.
+% TODO@TN: Peer review for copyediting and content.
+% TODO@TN: Use fewer idioms.
+
 \begin{document}
 
     % Title page
@@ -88,9 +93,9 @@
     \pagebreak
 
     % Table of Contents
-    \setlength{\parskip}{0em}
+    \setlength{\parskip}{1em}
+    \thispagestyle{section_start_style}
     \tableofcontents
-    \thispagestyle{empty}
     \setlength{\parskip}{1em}
     \pagebreak
 
@@ -117,6 +122,9 @@
     % Audit
     \input{rules/latex/content/audit}
     \pagebreak
+
+    % Appendices should have section.
+    \pagestyle{section_start_style}
 
     % Appendix A: Glossary
     \input{rules/latex/appendices/appendix_a}

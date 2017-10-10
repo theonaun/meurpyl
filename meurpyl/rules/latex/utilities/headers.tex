@@ -56,6 +56,24 @@
     }
 }
 
+\fancypagestyle{preamble_style}{
+    % Left header
+    \lhead{
+        \begin{tikzpicture}[overlay]
+            \node[
+                fill=meurpylpurple,
+                minimum width=20cm,
+                minimum height=1cm,
+                text height=1.5ex,
+                text depth=0ex,
+            ]
+                {
+                    \normalsize\textcolor{white}{\nouppercase{Preamble}}
+                };
+        \end{tikzpicture}
+    }
+}
+
 \fancypagestyle{blank_style}{
 	% Left header
     \lhead{
