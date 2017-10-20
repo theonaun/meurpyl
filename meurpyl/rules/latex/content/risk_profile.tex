@@ -63,19 +63,19 @@
 
             \subsubsection{Internally-Developed packages}
 
-                Packages developed by organizations internally have risks that differ from packages developed by external groups or individuals. This is expected: companies know their employees and % TODO
+                Packages developed by organizations internally have risks that differ from packages developed by external groups or individuals. This is expected: companies have a great deal more control over employees than they do over third parties. They choose to associate with these employees, they know who these employees are, and in a general sense they control the actions of these employees.
 
                 \textbf{Source Code Control.}
-                Irrespective of whether code exists in a data analysis or development environment, any code significantly affecting business processes should be segregated and controlled.
+                Irrespective of whether code exists in a data analysis or development environment, any code significantly affecting business processes should be segregated and controlled. Risks related to uncontrolled code can manifest themselves in a number of ways. Source code can disappear or become corrupted, making it nearly impossible for a company to reconstruct a particular process or set of processes. Source code can be maliciously altered and then have the evidence of that alteration removed. Source code can be saved over, making rollback to previous versions impossible. The use of distributed packages across an organization without some risk of syncronization runs the risk of creating version sprawl.
 
                 \textbf{Defective Maintenance, Testing, and Documentation.}
-                Body text.
+                Even absent other risks, poor quality assurance for software can render software useless, unwieldly, or worse. This problem is often magnified in Python because of the iterative development practices often used by its developers. Software that is scripted once and never maintained has a high liklihood of failure. Code created without proper testing facilities and support will often fail when chaged. Without documentation it is near impossible to sustain institutional knowledge upon a developers departure.
 
                 \textbf{Malicious Packages.}
-                Body text.
+                Because packages are inherently meant to be reuseable bundles of code, they provide an excellent vector for sharing of malicious softare. While Python source code is open for peer review, compiled extensions may not be. An employee seeking to distribute harmful code could potentially obfuscate the code's purpose and distribute it to others. 
 
                 \textbf{Model Risk Management.}
-                Body text.
+                Bundling code within a package and sharing it with other groups passes the risks involved in that package to a large potential base of users. If the package was not created as a part of an established model risk process, any incorrect assumptions or model deficiencies will be passed on to later users. Even if the model was properly vetted, packaged models still run the risk of other groups using the models in unintended ways. 
                 
             \subsubsection{Externally-Developed packages}
 
