@@ -1,26 +1,27 @@
 \begin{titlepage}
     \vspace*{6cm}
-    \begin{tikzpicture}[overlay]
-        \node[
-            fill=meurpylpurple,
-            minimum width=40cm,
-            minimum height=4cm,
-            text height=8ex,
-            text depth=1ex,
-        ]
-        {
-            \hspace{17cm}
-        	\fontsize{50}{50}
-        	\textcolor{white}
-        	{
-        		\selectfont MEURPyL
-                \hspace{1cm}
-        		\def\svgwidth{2cm}
-        		\input{rules/static/white_python_logo.pdf_tex}
-        	}
-        };
-        %{\Huge\textcolor{white}{MEURPyL}};
-    \end{tikzpicture}
+    \begingroup % This is needed to avoid ugly semicolons.
+        \begin{tikzpicture}[overlay]
+            \node[
+                fill=meurpylpurple,
+                minimum width=40cm,
+                minimum height=4cm,
+                text height=8ex,
+                text depth=1ex,
+            ]
+            {
+                \hspace{17cm}
+            	\fontsize{50}{50}
+            	\textcolor{white}
+            	{
+            		\selectfont MEURPyL
+                    \hspace{1cm}
+            		\def\svgwidth{2cm}
+            		\input{rules/static/white_python_logo.pdf_tex}
+            	}
+            };
+        \end{tikzpicture}
+    \endgroup
     \begin{flushleft}{}
         \vspace{3cm}
         \Huge 

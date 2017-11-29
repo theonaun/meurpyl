@@ -12,7 +12,7 @@ cd ..
 pdflatex -halt-on-error -output-directory=./rules/build ./rules/latex/meurpyl.tex
 
 # Build markdown
-pandoc -s ./rules/latex/meurpyl.tex -o ./rules/build/meurpyl.md
+pandoc -s ./rules/latex/meurpyl.tex -o ./rules/build/meurpyl.md -f latex
 
 # Build html
 pandoc -s ./rules/latex/meurpyl.tex -o ./rules/build/meurpyl.html
