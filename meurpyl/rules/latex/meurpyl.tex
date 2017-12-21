@@ -18,6 +18,7 @@
 \usepackage{titlesec}
 \usepackage[sfdefault]{universalis}
 \usepackage{wrapfig}
+\usepackage{enumitem}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Variables
@@ -35,6 +36,9 @@
 % No pargraph indentation
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1em}
+
+% Cut down enum spacing
+\setlist[enumerate]{itemsep=.5em,parsep=0em,before={\parskip=.5em}}
 
 % No word breaks unless it's a really, really long word.
 \lefthyphenmin=10
@@ -93,10 +97,8 @@
     \pagebreak
 
     % Table of Contents
-    \setlength{\parskip}{.5em}
     \thispagestyle{section_start_style}
     \tableofcontents
-    \setlength{\parskip}{1em}
     \pagebreak
 
     % Preamble
