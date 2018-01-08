@@ -3,3 +3,26 @@
 \thispagestyle{section_start_style}
 
 \subsection*{Introduction}
+
+Notes:
+	All environs:
+		Snitch shell
+			High overhead: all lexed code sent to protected file or central server
+			Low overhead: only in the event of imports
+	Diff environs:
+		Hobble 0:
+			Open package management
+		Hobble 1:
+			Pip/conda locked down
+			includes sockets, requests, databases, etc.
+		Hobble 2:
+			No mechanism to move files outside organization
+			No mechanism for encrypting data
+		Hobble 3:
+			No mechanism for base interpreter and os config (sys/os)
+		Hobble 4:
+			Static data environment with bare minimum of packages
+			Interpreter wrapper that only allows file writing
+		Accomplished by?
+			Inputs violating policy raise runtime error that exits.
+			Standard library can import os/sys, but compilation of new items with sys/os fails.
