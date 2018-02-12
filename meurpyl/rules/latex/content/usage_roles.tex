@@ -36,7 +36,7 @@
 
 			Exploratory Data Analysis ("EDA") is an integral part of any data analysis workflow.\footnote{\url{https://en.wikipedia.org/wiki/Exploratory_data_analysis}} This process allows for analysts to become familiar with production data, generate pre-models to inform the model risk management process, and glean insights through trial and error with that data. 
 
-			EDA involves both programming and production analysis, which often have mutually exclusive controls--consequently, it is ill-suited to being completely in either domain. The common thread with EDA activities is that they: a) take production data, b) are nimble processes with minimal overhead or risk, and c) output information or other ephemeral deliverables that other groups can use to create non-EDA activities.
+			Data Exploration involves both programming and production analysis, which often have mutually exclusive controls--consequently, it is ill-suited to being completely in either domain. The common thread with EDA activities is that they: a) take production data, b) are nimble processes with minimal overhead or risk, and c) output information or other ephemeral deliverables that other groups can use to create non-EDA activities.
 
 		\subsubsection{Criteria}
 
@@ -80,28 +80,38 @@
 
 		\subsubsection{Description}
 
-			Data Processing has a different scope and scale than Data Exploration. Data Exploration endeavors to find trends and actionable insights; Data Processing focuses on operationalizing and organization's data, and using it to accheive the organization's goals.
+			Data Processing has a different scope and purpose than Data Exploration. Data Exploration endeavors to find trends and actionable insights; Data Processing focuses on operationalizing and organization's data, and using it to achieve the organization's goals.
 
-			Data Processing exists to support day-to-day activities, and consequently it is performed on a recurring basis. Often this will be conducted without human intervention, which means that abnormal behavior or erroneous results must be caught or they will happen multiple times.
+			Data Processing exists to support day-to-day activities, and consequently it is performed on a recurring basis and at scale. Often this will be conducted with limited amounts of human intervention, or will be run entirely autonomously. This means that abnormal behavior or erroneous results must be caught with compensating controls or it will occur multiple times. In addition, because its foundational nature, Data Processing often supports critical activities within the enterprise. If processing fails, mission critical systems will fail in turn.
 
-			Human intervention
-			Actual data 
+			Data Processing activities align with the traditional software development and model risk management lifecycle. These activities generally: a) use production data and process it in order to pass it on, b) are not easily changed and have a comparatively high level of overhead and risk, and c) output deliverables upon which other groups rely upon on a regular basis.
 
 		\subsubsection{Criteria}
 
 			In order to qualify for inclusion under this environment, Python usage must:
 
 			\begin{enumerate}
-        		\item A
+                \item Have sufficient documentation to allow for ongoing program maintenance
+                \item Exist within a source controlled environment
+                \item Include emergency or disaster recovery plans
+                \item Occur in a centralized processing environment
         	\end{enumerate}
 
 			In order to qualify for inclusion under this environment, Python usage must not:
 
 			\begin{enumerate}
-        		\item A
+        		\item Be run from client workstations
+                \item Require significant user intervention for TODO
         	\end{enumerate}
 
 		\subsubsection{Examples}
+
+			\begin{enumerate}
+        		\item Geographic Information System (GIS) for providing emergency alerts to employees
+        		\item Complaint text-mining process for surfacing specific regulatory complaint types
+        		\item Monthly reconciliations of systems of record 
+        		\item Batch process data lake validation and cleaning routines
+        	\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
