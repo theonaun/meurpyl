@@ -16,7 +16,6 @@
         	\item Data Exploration (DE)
         	\item Data Processing (DP)
         	\item System Adminstration (SA)
-        	\item Systems Development (SD)
         	\item Unclassified Usage (UU)
         \end{enumerate}
 
@@ -43,10 +42,10 @@
 			In order to qualify for inclusion under this environment, Python usage must:
 
 			\begin{enumerate}
+                \item Be used primarily for purpose of processing or analyzing data
         		\item Have end deliverables confined to low-risk, non-mission-critical activities
-        		\item Be used in a non-automated manner, with human intervention in place for all processing
+        		\item Be used in a non-automated manner, with human intervention in place for processing
         		\item Have analysis or programs in final form used ten or fewer times over the course of a program's lifetime
-        		\item When running programs, the programs should be run by the program's creator
         	\end{enumerate}
 
 			In order to qualify for inclusion under this environment, Python usage must not:
@@ -80,37 +79,34 @@
 
 		\subsubsection{Description}
 
-			Data Processing has a different scope and purpose than Data Exploration. Data Exploration endeavors to find trends and actionable insights; Data Processing focuses on operationalizing and organization's data, and using it to achieve the organization's goals.
+			Data Processing has a different scope and purpose than Data Exploration. Data Exploration endeavors to find trends and actionable insights; Data Processing focuses on operationalizing and organization's data, and using it to accheive the organization's goals.  
 
 			Data Processing exists to support day-to-day activities, and consequently it is performed on a recurring basis and at scale. Often this will be conducted with limited amounts of human intervention, or will be run entirely autonomously. This means that abnormal behavior or erroneous results must be caught with compensating controls or it will occur multiple times. In addition, because its foundational nature, Data Processing often supports critical activities within the enterprise. If processing fails, mission critical systems will fail in turn.
 
-			Data Processing activities align with the traditional software development and model risk management lifecycle. These activities generally: a) use production data and process it in order to pass it on, b) are not easily changed and have a comparatively high level of overhead and risk, and c) output deliverables upon which other groups rely upon on a regular basis.
+			Data Processing activities align with the traditional software development and model risk management lifecycle, but are unique enough to warrant individualized treatment. These activities generally: a) use production data and process it in order to pass it on, b) are not easily changed and have a comparatively high level of overhead and risk, and c) output deliverables upon which other groups rely upon on a regular basis.
 
 		\subsubsection{Criteria}
 
 			In order to qualify for inclusion under this environment, Python usage must:
 
 			\begin{enumerate}
-                \item Have sufficient documentation to allow for ongoing program maintenance
-                \item Exist within a source controlled environment
-                \item Include emergency or disaster recovery plans
-                \item Occur in a centralized processing environment
+                \item Be used primarily for the purpose of processing or analyzing data
         	\end{enumerate}
 
 			In order to qualify for inclusion under this environment, Python usage must not:
 
 			\begin{enumerate}
-        		\item Be run from client workstations
-                \item Require significant user intervention for TODO
+        		\item Qualify for inclusion under the Data Exploration
+                \item Include significant non-data processing functionality
         	\end{enumerate}
 
 		\subsubsection{Examples}
 
 			\begin{enumerate}
-        		\item Geographic Information System (GIS) for providing emergency alerts to employees
+        		\item Routines for pulling disaster data and alligning it with customer profiles
         		\item Complaint text-mining process for surfacing specific regulatory complaint types
-        		\item Monthly reconciliations of systems of record 
         		\item Batch process data lake validation and cleaning routines
+                \item Security and commodity algorithmic traiding analysis
         	\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,41 +115,37 @@
 
 		\subsubsection{Objective}
 
-			A
+			Traditional systems administration 
 
 		\subsubsection{Description}
 
 			A
 
-		\subsubsection{Criteria}
 
-			In order to qualify for inclusion under this environment, Python usage must:
-
-			\begin{enumerate}
-        		\item A
-        	\end{enumerate}
-
-			In order to qualify for inclusion under this environment, Python usage must not:
-
-			\begin{enumerate}
-        		\item A
-        	\end{enumerate}
-
-		\subsubsection{Examples}
-
-			A
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-	\subsection{Systems Development (SD)}
 
 		\subsubsection{Objective}
 
-			A
+			From a risk management perspective, using Python for data analysis is indistinguishable from using Python for application development. No matter the purpose, the users is programming and will have access to the same powerful standard library that has the potential for misuse or abuse. At the same time, the iterative nature of data analysis is unsuited to the typical controls around application development lifecycles. 
+
+			By segregating certain Python analytical activities within a Data Exploration usage role, it is possible to create an environment that strikes a balance between control and flexibility.
 
 		\subsubsection{Description}
 
-			A
+			Due to its ease-of-use and the powerful data libraries availible, Python has become the primary language used in data science. Data science and its associated activities have unique requirements that warrant a specialized usage category. 
+
+			Exploratory Data Analysis ("EDA") is an integral part of any data analysis workflow.\footnote{\url{https://en.wikipedia.org/wiki/Exploratory_data_analysis}} This process allows for analysts to become familiar with production data, generate pre-models to inform the model risk management process, and glean insights through trial and error with that data. 
+
+			Data Exploration involves both programming and production analysis, which often have mutually exclusive controls--consequently, it is ill-suited to being completely in either domain. The common thread with EDA activities is that they: a) take production data, b) are nimble processes with minimal overhead or risk, and c) output information or other ephemeral deliverables that other groups can use to create non-EDA activities.
+
+
+
+
+
+
+
+
+
+
 
 		\subsubsection{Criteria}
 
@@ -179,26 +171,29 @@
 
 		\subsubsection{Objective}
 
-			A
+			Meurpyl endeavors to carve out exceptions for certain usage roles in which Python can be used without hurting its effectiveness by treating it a pure development tool. In certain cases, treating Python like other languages such as COBOL and C++ is warranted.
 
 		\subsubsection{Description}
 
-			As
+			This usage role functions as a "catch-all" for any activity within the organization using Python that does not fit into the above-mentioned usage roles. It removes this items from Meurpyl's scope, so that they may be addressed with traditional software development or DevOps lifecycles.
 
 		\subsubsection{Criteria}
 
 			In order to qualify for inclusion under this environment, Python usage must:
 
 			\begin{enumerate}
-        		\item A
+        		\item No requirements
         	\end{enumerate}
 
 			In order to qualify for inclusion under this environment, Python usage must not:
 
 			\begin{enumerate}
-        		\item A
+        		\item Qualify for the Data Exporation, Data Processing, or System Administration usage roles 
         	\end{enumerate}
 
 		\subsubsection{Examples}
 
-			A
+            \begin{enumerate}
+                \item Development of a GUI application for teller use
+                \item Creation of a mobile application for customer use
+            \end{enumerate}
