@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "pyhobble"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"sn_parser.h": "c"
+		}
+	}
+}

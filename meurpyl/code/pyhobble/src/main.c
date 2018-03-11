@@ -1,4 +1,4 @@
-/*  PyHobble v.3.4.2
+/*  PyHobble v.3.8.0
 
     A utility for monitoring the execution of a Python interpreter, checking
     commands as they are run, and limiting specific commands based on
@@ -20,40 +20,35 @@
 
 
 #include <sn_logger.h>
+#include <sn_parser.h>
 #include <sn_socket.h>
 
 
 int main(int argc, char* argv[]) {
+    // Create parser.
+    sn_parser_t *parser = SNParser();
+    return 1;
     // Create logger.
     sn_logger_t *logger = SNLogger();
-
+    // Create socket
+    sn_socket_t *sock = SNSocket();
     // Open SSL
 
-    sn_socket_t *socket = sn_socket_create();
     fprintf(stderr, "HERE!");
     while (1) {
         int read_status = read(
-            socket->fd_comm, 
-            socket->buffer, 
-            sizeof(socket->buffer)
+            sock->fd_comm, 
+            sock->buffer, 
+            sizeof(sock->buffer)
         );
-        fprintf(stderr, socket->buffer);
+        fprintf(stderr, sock->buffer);
         fprintf(stderr, "%i", read_status);
-        if (socket->buffer[0] == 'e') {
+        if (sock->buffer[0] == 'e') {
             break;
         }
         sleep(1);
     }
     fprintf(stdout, "Fries are done!\n");
-    sn_socket_destroy(socket);
+    sock->destroy(sock->self);
     return 0;
-    /* Only superusers should have the ability to run. 
-    fprintf(stdout, "Damn!");
-    uid_t euid = geteuid();
-    if (euid != 0) {
-        fprintf(stderr, "Error: insufficient permissions.\n");
-        exit(EACCES);
-    }
-    int sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    // Serialize messages?*/
 }
