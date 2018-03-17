@@ -1,3 +1,4 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -73,6 +74,7 @@ sn_parser_read(sn_parser_t *self) {
         fseek(config_file, 0, SEEK_SET); 
         self->text = malloc(file_size + 1);
         fread(self->text, 1, file_size, config_file);
+        self->text_size = strlen(self->text);
         fclose(config_file);
     }
     return;
@@ -80,6 +82,48 @@ sn_parser_read(sn_parser_t *self) {
 
 static void
 sn_parser_parse(sn_parser_t *self) {
-
+    int newline_index[100];
+    memset(newline_index, -1, sizeof(newline_index));
+    newline_index[0] = 0;
+    int line_count = 1;
+    int i = 0;
+    int text_size = self->text_size;
+    for (i=1; i < text_size; i++) {
+        if (self->text[i] == '\n') {
+            if (line_count > 100) {
+                perror("100+ line config file. Probably bad.");
+            }
+            newline_index[line_count] = i;
+            line_count++;
+        }
+    }
+    for (i=0; i<sizeof(newline_index); i++) {
+        int start = 0;
+        int end = 0;
+        // -1 is sentinel.
+        if (start == -1) {
+            break;
+        }
+        // First item requires special rules.
+        if (i == 0) {
+            start = newline_index[0];
+            end = newline_index[1] - 1;
+        }
+        else {
+            start = newline_index[i] + 1;
+            end = newline_index[i+1] - 1;
+            if (end < 0) {
+                end = self->text_size - 1;
+            }
+        }
+        size_t length = end - start + 1;
+        if (length > 1024) {
+            perror("Bad config file.");
+        }
+        char string_buffer[length + 1];
+        memset(string_buffer, '\0', length + 1);
+        memcpy(string_buffer, &(self->text[start]), length);
+        fprintf(stderr, string_buffer);
+    }
     return;
 }
