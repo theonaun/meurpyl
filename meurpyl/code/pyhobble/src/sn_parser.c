@@ -1,3 +1,4 @@
+#include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,9 +10,11 @@
 static const uint16_t  DEFAULT_PORT = 11235;
 static const char     *CONFIG_PATH  = {"/etc/pyhobble.conf"};
 
-static void   sn_parser_destroy (sn_parser_t *);
-static void   sn_parser_read    (sn_parser_t *);
-static void   sn_parser_parse   (sn_parser_t *);
+static void sn_parser_destroy (sn_parser_t *);
+static void sn_parser_read    (sn_parser_t *);
+static void sn_parser_parse   (sn_parser_t *);
+static void sn_parser_map     (sn_parser_t *, char *);
+static void sn_parser_get_nl  (sn_parser_t *);
 
 sn_parser_t *
 SNParser(void) {
@@ -27,10 +30,12 @@ SNParser(void) {
     // Add methods
     parser->destroy = &sn_parser_destroy;
     parser->_read   = &sn_parser_read;
+    parser->_get_nl = &sn_parser_get_nl;
     parser->_parse  = &sn_parser_parse;
-    // Read and parse.
-    parser->_read(parser->self);
-    parser->_parse(parser->self);
+    parser->_map    = &sn_parser_map;
+    parser->_read  (parser->self);
+    parser->_get_nl(parser->self);
+    parser->_parse (parser->self);
    // Check validity.
     if (parser < 0) {
         return NULL;
@@ -49,6 +54,7 @@ sn_parser_destroy(sn_parser_t *self) {
         memset(self, 0, sizeof(*self));
         free(self->path);
         free(self->text);
+        // TODO settings chain.
         free(self);
         return;
     }
@@ -80,50 +86,118 @@ sn_parser_read(sn_parser_t *self) {
     return;
 }
 
-static void
-sn_parser_parse(sn_parser_t *self) {
-    int newline_index[100];
-    memset(newline_index, -1, sizeof(newline_index));
-    newline_index[0] = 0;
+static void 
+sn_parser_get_nl(sn_parser_t *self) {
+    memset(self->newline_index, -1, sizeof(self->newline_index));
+    self->newline_index[0] = 0;
     int line_count = 1;
     int i = 0;
     int text_size = self->text_size;
+    // Get indexes for all newlines.
     for (i=1; i < text_size; i++) {
         if (self->text[i] == '\n') {
             if (line_count > 100) {
                 perror("100+ line config file. Probably bad.");
             }
-            newline_index[line_count] = i;
+            self->newline_index[line_count] = i;
             line_count++;
         }
     }
-    for (i=0; i<sizeof(newline_index); i++) {
+    return;
+}
+
+static void
+sn_parser_parse(sn_parser_t *self) {
+   // Go through newline indexes and pull strings.
+    int i = 0;
+    for (i=0; i<sizeof(self->newline_index); i++) {
         int start = 0;
         int end = 0;
-        // -1 is sentinel.
-        if (start == -1) {
-            break;
-        }
         // First item requires special rules.
         if (i == 0) {
-            start = newline_index[0];
-            end = newline_index[1] - 1;
+            start = self->newline_index[0];
+            end = self->newline_index[1] - 1;
         }
         else {
-            start = newline_index[i] + 1;
-            end = newline_index[i+1] - 1;
+            start = self->newline_index[i] + 1;
+            end = self->newline_index[i+1] - 1;
             if (end < 0) {
                 end = self->text_size - 1;
             }
         }
-        size_t length = end - start + 1;
-        if (length > 1024) {
-            perror("Bad config file.");
+         // -1 is sentinel.
+        if (self->newline_index[i] == -1) {
+            break;
         }
-        char string_buffer[length + 1];
-        memset(string_buffer, '\0', length + 1);
+        // Get size and pull string to buffer.
+        size_t length = end - start + 1;
+        if (length > P_BUFFER_SIZE - 1) {
+            perror("Bad config file. Long line.");
+        }
+        char string_buffer[P_BUFFER_SIZE] = {0};
         memcpy(string_buffer, &(self->text[start]), length);
-        fprintf(stderr, string_buffer);
+        self->_map(self, string_buffer);
     }
+    return;
+}
+
+static void
+sn_parser_map(sn_parser_t *self, char *string) {
+    sn_setting_t  *node_ptr  = NULL;
+    sn_setting_t **node_pptr = NULL;
+
+    // Point node_pptr at tail node, which is null.
+    if (!(self->settings_chain)) {
+        node_pptr = &(self->settings_chain);
+    }
+    else {
+        node_pptr = &(self->settings_chain);
+        while (*node_pptr) {
+            node_pptr = &((*node_pptr)->next);
+        }
+    }
+
+    // Get component strings from "key=value" string
+    char *equal_index_ptr = strchr(string, '=');
+    if (!equal_index_ptr) {
+        return;
+    }
+    int equal_index = (int)(equal_index_ptr - string);
+    string[equal_index] = '\0';
+    char key_buffer[P_BUFFER_SIZE];
+    char val_buffer[P_BUFFER_SIZE];
+    memset(key_buffer, '\0', P_BUFFER_SIZE);
+    memset(val_buffer, '\0', P_BUFFER_SIZE);
+    strcpy(key_buffer, string);
+    strcpy(val_buffer, string + equal_index + 1);
+
+    // Attempt to convert to long.
+    long numeric_rep = 0;
+    char *string_rep;
+    int prev_errno = errno;
+    errno = 0;
+    numeric_rep = strtol(val_buffer, &string_rep, 10);
+    bool overflow = errno;
+    bool parse_error = *string_rep != '\0';
+
+    // If not a number, string, otherwise long. 
+    if (overflow || parse_error) {
+        *node_pptr = malloc(sizeof(sn_setting_t));
+        node_ptr = *node_pptr;
+        memset(node_ptr, '\0', sizeof(sn_setting_t));
+        strcpy(node_ptr->key, key_buffer);
+        strcpy(node_ptr->type, "str");
+        strcpy(node_ptr->value.char_, string_rep);
+        fprintf(stderr, node_ptr->type);
+        node_ptr->value.long_ = 0;
+    } else {
+        *node_pptr = malloc(sizeof(sn_setting_t));
+        node_ptr = *node_pptr;
+        memset(node_ptr, '\0', sizeof(sn_setting_t));
+        strcpy(node_ptr->key, key_buffer);
+        strcpy(node_ptr->type, "long");
+        node_ptr->value.long_ = numeric_rep;
+        memset(node_ptr->value.char_, '\0', P_BUFFER_SIZE);
+   }
     return;
 }

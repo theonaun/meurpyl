@@ -10,7 +10,8 @@ GENERAL:
     LICENSE:        MIT
     DESCRIPTION:    This file defines the sn_parser_t struct, the supporting
                     sn_setting_t struct, and the SNParser() constructor. This
-                    allows for simplified parsing files.
+                    allows for simplified parsing files. It also contains the
+                    P_BUFFER_SIZE constant.
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -53,16 +54,17 @@ sn_parser_t
 #include <stdint.h>
 #include <stdlib.h>
 
+#define P_BUFFER_SIZE 1028
+
 
 typedef struct sn_setting_t {
 
     struct sn_setting_t *next;
-    char                 key[100];
+    char                 key[P_BUFFER_SIZE];
     char                 type[5];
     union value {
-       char              c[100];
-       int               i;
-       long              l;
+       char              char_[P_BUFFER_SIZE];
+       long              long_;
     } value;
 
 } sn_setting_t;
@@ -77,12 +79,15 @@ typedef struct sn_parser_t {
     size_t              text_size;
     char               *path;
     char               *text;
+    int                 newline_index[100];
     sn_setting_t       *settings_chain;
 
     // Methods
     void               (*destroy) (struct sn_parser_t *);
     void               (*_read)   (struct sn_parser_t *);
     void               (*_parse)  (struct sn_parser_t *);
+    void               (*_get_nl) (struct sn_parser_t *);
+    void               (*_map)    (struct sn_parser_t *, char *);
 
 } sn_parser_t;
 
