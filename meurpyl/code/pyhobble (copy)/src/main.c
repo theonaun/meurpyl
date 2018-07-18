@@ -14,23 +14,21 @@
 
  */
 
+
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <unistd.h> // TODO: gives sleep and read.
+
 
 #include <hob_logger.h>
 #include <hob_parser.h>
 #include <hob_socket.h>
 
-#include <hob_setting.h>
 
 int main(int argc, char* argv[]) {
     // Create parser.
-    // hob_parser_t *parser = hob_parser_new();
-    hob_setting_t *setting;
-    setting;
-/*
-
+    // TODO: clobbering settings_chain. 
+    hob_parser_t *parser = HOBParser();
     // Create logger.
     hob_logger_t *logger = HOBLogger();
     // Create socket
@@ -42,18 +40,6 @@ int main(int argc, char* argv[]) {
             sock->buffer, 
             sizeof(sock->buffer)
         );
-        while (1) {
-            hob_setting_t *node = parser->settings_chain;
-            while (node) {
-                fprintf(stderr, "%p:\t", node);
-                fprintf(stderr, "%s\t", (char *) node->type);
-                fprintf(stderr, "%s\t", (char *) node->value.char_);
-                fprintf(stderr, "%li\t", (char *) node->value.long_);
-                fprintf(stderr, "%s\n", (char *) node->key);
-                node = node->next;
-                sleep(1);
-            }
-        }
         fprintf(stderr, sock->buffer);
         fprintf(stderr, "%i", read_status);
         fprintf(stderr, "%s", parser->settings_chain->key);
@@ -65,7 +51,6 @@ int main(int argc, char* argv[]) {
     fprintf(stdout, "Fries are done!\n");
     sock  ->destroy(sock  ->self);
     logger->destroy(logger->self);
-    hob_parser_delete(parser);
-*/
+    parser->destroy(parser->self);
     return 0;
 }

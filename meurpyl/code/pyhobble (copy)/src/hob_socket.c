@@ -4,18 +4,18 @@
 
 #include <sys/socket.h>
 
-#include "sn_socket.h"
+#include "hob_socket.h"
 
 
 #include <stdio.h>
 
 
-static void sn_socket_destroy(sn_socket_t *);
+static void hob_socket_destroy(hob_socket_t *);
 
-sn_socket_t *
-SNSocket(void) {
-    sn_socket_t *sock = malloc(sizeof(sn_socket_t));
-    memset(sock, 0, sizeof(sn_socket_t));
+hob_socket_t *
+HOBSocket(void) {
+    hob_socket_t *sock = malloc(sizeof(hob_socket_t));
+    memset(sock, 0, sizeof(hob_socket_t));
     sock->self = sock;
     // Get socket.
     sock->fd_base = socket(AF_INET, SOCK_STREAM, 0);
@@ -45,7 +45,7 @@ SNSocket(void) {
         &(sock->client_address_size)
     );
     // Add methods
-    sock->destroy = &sn_socket_destroy;
+    sock->destroy = &hob_socket_destroy;
     // Check validity.
     if (sock < 0) {
         return NULL;
@@ -56,7 +56,7 @@ SNSocket(void) {
 }
 
 static void
-sn_socket_destroy(sn_socket_t *socket) {
+hob_socket_destroy(hob_socket_t *socket) {
     if (socket) {
         close(socket->fd_base);
         close(socket->fd_comm);

@@ -1,17 +1,17 @@
 /*****************************************************************************
 
 GENERAL:
-    HEADER_NAME:    sn_logger.h
-    COMPANION_C:    sn_logger.c
+    HEADER_NAME:    hob_logger.h
+    COMPANION_C:    hob_logger.c
     AUTHOR:         Theo Naunheim <theonaunheim@gmail.com>
     COPYRIGHT:      Theo Naunheim, 2018
     LICENSE:        MIT
-    DESCRIPTION:    This file defines the sn_logger_t struct and its
-                    associated SNLogger() function. These facilities provide
-                    for simplifiedlogging.
+    DESCRIPTION:    This file defines the hob_logger_t struct and its
+                    associated HOBLogger() function. These facilities provide
+                    for simplified logging.
 
 CONSTRUCTOR:
-    SNLogger:   Builds logger.
+    HOBLogger:   Builds logger.
 
 ATTRIBUTES:
     self:       Instance reference.
@@ -28,8 +28,8 @@ METHODS:
 */////////////////////////////////////////////////////////////////////////////
 
 
-#ifndef SN_LOGGER_H
-#define SN_LOGGER_H
+#ifndef HOB_LOGGER_H
+#define HOB_LOGGER_H
 
 
 #include <stdlib.h>
@@ -37,17 +37,18 @@ METHODS:
 #include <sys/syslog.h>
 
 
-typedef struct sn_logger_t {
+typedef struct hob_logger_t {
     // Attributes
-    struct sn_logger_t *self;
+    struct hob_logger_t *self;
     char *log_prefix;
     // Methods
-    void (*info)(struct sn_logger_t *, char *);
-    void (*warn)(struct sn_logger_t *, char *);
-    void (*destroy)(struct sn_logger_t *);
-} sn_logger_t;
+    void (*info)(struct hob_logger_t *, char *);
+    void (*warn)(struct hob_logger_t *, char *);
+    void (*destroy)(struct hob_logger_t *);
+} hob_logger_t;
 
-sn_logger_t * SNLogger(void);
+
+hob_logger_t * HOBLogger(void);
 
 
 #endif

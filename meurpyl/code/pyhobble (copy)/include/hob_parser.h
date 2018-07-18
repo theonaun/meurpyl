@@ -3,32 +3,32 @@
 //////////////////////////////////////////////////////////////////////////////
 
 GENERAL:
-    HEADER_NAME:    sn_parser.h
-    COMPANION_C:    sn_parser.c
+    HEADER_NAME:    hob_parser.h
+    COMPANION_C:    hob_parser.c
     AUTHOR:         Theo Naunheim <theonaunheim@gmail.com>
     COPYRIGHT:      Theo Naunheim, 2018
     LICENSE:        MIT
-    DESCRIPTION:    This file defines the sn_parser_t struct, the supporting
-                    sn_setting_t struct, and the SNParser() constructor. This
+    DESCRIPTION:    This file defines the hob_parser_t struct, the supporting
+                    hob_setting_t struct, and the HOBParser() constructor. This
                     allows for simplified parsing files. It also contains the
                     P_BUFFER_SIZE constant.
 
 //////////////////////////////////////////////////////////////////////////////
 
-sn_settings_t
+hob_settings_t
 
     ATTRIBUTES:     
-        next:       Next sn_parser_t in settings chain.
+        next:       Next hob_parser_t in settings chain.
         key:        The name of the setting (less than 100 char).
         type:       The type of the settings value.
         value:      The wrapped data (union) for the setting.
 
 //////////////////////////////////////////////////////////////////////////////
 
-sn_parser_t
+hob_parser_t
 
     CONSTRUCTOR:
-        SNParser:   Builds the parser.
+        HOBParser:   Builds the parser.
 
     ATTRIBUTES:
         self:       Instance reference.
@@ -48,8 +48,8 @@ sn_parser_t
 */
 
 
-#ifndef SN_PARSER_H
-#define SN_PARSER_H
+#ifndef HOB_PARSER_H
+#define HOB_PARSER_H
 
 #include <stdint.h>
 #include <stdlib.h>
@@ -57,9 +57,9 @@ sn_parser_t
 #define P_BUFFER_SIZE 1028
 
 
-typedef struct sn_setting_t {
+typedef struct hob_setting_t {
 
-    struct sn_setting_t *next;
+    struct hob_setting_t *next;
     char                 key[P_BUFFER_SIZE];
     char                 type[5];
     union value {
@@ -67,32 +67,32 @@ typedef struct sn_setting_t {
        long              long_;
     } value;
 
-} sn_setting_t;
+} hob_setting_t;
 
 
-typedef struct sn_parser_t {
+typedef struct hob_parser_t {
 
     // Attributes
-    struct sn_parser_t *self;
-    uint16_t            port;
-    size_t              path_size;
-    size_t              text_size;
-    char               *path;
-    char               *text;
-    int                 newline_index[100];
-    sn_setting_t       *settings_chain;
+    struct hob_parser_t *self;
+    uint16_t             port;
+    size_t               path_size;
+    size_t               text_size;
+    char                *path;
+    char                *text;
+    int                  newline_index[100];
+    hob_setting_t      **settings_chain;
 
     // Methods
-    void               (*destroy) (struct sn_parser_t *);
-    void               (*_read)   (struct sn_parser_t *);
-    void               (*_parse)  (struct sn_parser_t *);
-    void               (*_get_nl) (struct sn_parser_t *);
-    void               (*_map)    (struct sn_parser_t *, char *);
+    void               (*destroy) (struct hob_parser_t *);
+    void               (*_read)   (struct hob_parser_t *);
+    void               (*_parse)  (struct hob_parser_t *);
+    void               (*_get_nl) (struct hob_parser_t *);
+    void               (*_map)    (struct hob_parser_t *, char *);
 
-} sn_parser_t;
+} hob_parser_t;
 
 
-sn_parser_t * SNParser(void);
+hob_parser_t * HOBParser(void);
 
 
 #endif

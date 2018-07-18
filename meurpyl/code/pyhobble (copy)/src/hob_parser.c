@@ -4,23 +4,23 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <sn_parser.h>
+#include <hob_parser.h>
 
 
 static const uint16_t  DEFAULT_PORT = 11235;
-static const char     *CONFIG_PATH  = {"/etc/pyhobble.conf"};
+static const char     *CONFIG_PATH  = {"/etc/pyhobble_server/pyhobble_server.conf"};
 
-static void sn_parser_destroy (sn_parser_t *);
-static void sn_parser_read    (sn_parser_t *);
-static void sn_parser_parse   (sn_parser_t *);
-static void sn_parser_map     (sn_parser_t *, char *);
-static void sn_parser_get_nl  (sn_parser_t *);
+static void hob_parser_destroy (hob_parser_t *);
+static void hob_parser_read    (hob_parser_t *);
+static void hob_parser_parse   (hob_parser_t *);
+static void hob_parser_map     (hob_parser_t *, char *);
+static void hob_parser_get_nl  (hob_parser_t *);
 
-sn_parser_t *
-SNParser(void) {
+hob_parser_t *
+HOBParser(void) {
     // Create and self reference
-    sn_parser_t *parser = malloc(sizeof(sn_parser_t));
-    memset(parser, 0, sizeof(sn_parser_t));
+    hob_parser_t *parser = malloc(sizeof(hob_parser_t));
+    memset(parser, 0, sizeof(hob_parser_t));
     parser->self = parser;
     // Fill out path and length.
     size_t config_path_size = strlen(CONFIG_PATH) + 1;
@@ -28,11 +28,11 @@ SNParser(void) {
     parser->path = malloc(parser->path_size);
     strcpy(parser->path, CONFIG_PATH);
     // Add methods
-    parser->destroy = &sn_parser_destroy;
-    parser->_read   = &sn_parser_read;
-    parser->_get_nl = &sn_parser_get_nl;
-    parser->_parse  = &sn_parser_parse;
-    parser->_map    = &sn_parser_map;
+    parser->destroy = &hob_parser_destroy;
+    parser->_read   = &hob_parser_read;
+    parser->_get_nl = &hob_parser_get_nl;
+    parser->_parse  = &hob_parser_parse;
+    parser->_map    = &hob_parser_map;
     parser->_read  (parser->self);
     parser->_get_nl(parser->self);
     parser->_parse (parser->self);
@@ -46,7 +46,8 @@ SNParser(void) {
 }
 
 static void
-sn_parser_destroy(sn_parser_t *self) {
+// TODO: No longer accurate.
+hob_parser_destroy(hob_parser_t *self) {
     if (self) {
         // Zero everything out and then free.
         memset(self->path, 0, self->path_size);
@@ -54,8 +55,18 @@ sn_parser_destroy(sn_parser_t *self) {
         memset(self, 0, sizeof(*self));
         free(self->path);
         free(self->text);
-        // TODO settings chain.
+        hob_setting_t *current_node;
+        hob_setting_t *next_node;
+        current_node = *(self->settings_chain); 
+        next_node = current_node->next;
+        // Free settings chain.
+        while (next_node != NULL) {
+            next_node = current_node->next;
+            current_node;
+        }
+        // Final free.
         free(self);
+
         return;
     }
     else {
@@ -64,7 +75,7 @@ sn_parser_destroy(sn_parser_t *self) {
 }
 
 static void
-sn_parser_read(sn_parser_t *self) {
+hob_parser_read(hob_parser_t *self) {
     FILE *config_file;
     config_file = fopen(CONFIG_PATH, "r");
     if (!config_file) {
@@ -87,7 +98,7 @@ sn_parser_read(sn_parser_t *self) {
 }
 
 static void 
-sn_parser_get_nl(sn_parser_t *self) {
+hob_parser_get_nl(hob_parser_t *self) {
     memset(self->newline_index, -1, sizeof(self->newline_index));
     self->newline_index[0] = 0;
     int line_count = 1;
@@ -107,7 +118,7 @@ sn_parser_get_nl(sn_parser_t *self) {
 }
 
 static void
-sn_parser_parse(sn_parser_t *self) {
+hob_parser_parse(hob_parser_t *self) {
    // Go through newline indexes and pull strings.
     int i = 0;
     for (i=0; i<sizeof(self->newline_index); i++) {
@@ -142,18 +153,23 @@ sn_parser_parse(sn_parser_t *self) {
 }
 
 static void
-sn_parser_map(sn_parser_t *self, char *string) {
-    sn_setting_t  *node_ptr  = NULL;
-    sn_setting_t **node_pptr = NULL;
+hob_parser_map(hob_parser_t *self, char *string) {
+    hob_setting_t  *node_ptr      = NULL;
+    hob_setting_t **node_pptr     = NULL;
+    hob_setting_t  *prev_node_ptr = NULL;
 
     // Point node_pptr at tail node, which is null.
     if (!(self->settings_chain)) {
-        node_pptr = &(self->settings_chain);
+        node_pptr     = malloc(sizeof(hob_setting_t *));
+        node_ptr      = malloc(sizeof(hob_setting_t  ));
+        *node_pptr    = node_ptr;
+        prev_node_ptr = NULL;
     }
     else {
-        node_pptr = &(self->settings_chain);
-        while (*node_pptr) {
-            node_pptr = &((*node_pptr)->next);
+        node_ptr = *(self->settings_chain);
+        while (node_ptr) {
+            prev_node_ptr = node_ptr;
+            node_ptr = node_ptr->next;
         }
     }
 
@@ -182,18 +198,17 @@ sn_parser_map(sn_parser_t *self, char *string) {
 
     // If not a number, string, otherwise long. 
     if (overflow || parse_error) {
-        *node_pptr = malloc(sizeof(sn_setting_t));
-        node_ptr = *node_pptr;
-        memset(node_ptr, '\0', sizeof(sn_setting_t));
+        node_ptr = malloc(sizeof(hob_setting_t));
+        prev_node_ptr->next = node_ptr;
+        memset(node_ptr, '\0', sizeof(hob_setting_t));
         strcpy(node_ptr->key, key_buffer);
-        strcpy(node_ptr->type, "str");
+        strcpy(node_ptr->type, "char");
         strcpy(node_ptr->value.char_, string_rep);
-        fprintf(stderr, node_ptr->type);
         node_ptr->value.long_ = 0;
     } else {
-        *node_pptr = malloc(sizeof(sn_setting_t));
-        node_ptr = *node_pptr;
-        memset(node_ptr, '\0', sizeof(sn_setting_t));
+        node_ptr = malloc(sizeof(hob_setting_t));
+        prev_node_ptr->next = node_ptr;
+        memset(node_ptr, '\0', sizeof(hob_setting_t));
         strcpy(node_ptr->key, key_buffer);
         strcpy(node_ptr->type, "long");
         node_ptr->value.long_ = numeric_rep;
